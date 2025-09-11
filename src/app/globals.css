@@ -4,3 +4,22 @@
 html {
   transition: background-color 0.3s, color 0.3s;
 }
+/* Hide or make scrollbar transparent */
+::-webkit-scrollbar {
+  width: 8px; /* or 0px if you want fully hidden */
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: transparent; /* can use rgba(0,0,0,0.3) for a subtle thumb */
+  border-radius: 9999px;
+}
+
+/* For Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: transparent transparent;
+}

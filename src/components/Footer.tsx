@@ -1,37 +1,45 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
+import { faInstagram, faYoutube } from "@fortawesome/free-brands-svg-icons"; // Youtube comes from brands
+
 
 export default function Footer() {
-  const [theme, setTheme] = useState<"light" | "dark">("light");
-
-  useEffect(() => {
-    // Check for saved theme or system preference on mount
-    const savedTheme = localStorage.getItem("theme") as "light" | "dark" | null;
-    if (savedTheme) {
-      setTheme(savedTheme);
-      document.documentElement.classList.toggle("dark", savedTheme === "dark");
-    }
-  }, []);
-
-  const toggleTheme = () => {
-    const newTheme = theme === "light" ? "dark" : "light";
-    setTheme(newTheme);
-    localStorage.setItem("theme", newTheme);
-    document.documentElement.classList.toggle("dark", newTheme === "dark");
-  };
-
   return (
-    <footer className="border-t border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 py-6 mt-auto text-center text-sm text-gray-500 dark:text-gray-400">
-      <div className="max-w-6xl mx-auto px-4 flex flex-col sm:flex-row justify-between items-center gap-2">
-        <span>© {new Date().getFullYear()} Greene Lab</span>
-        <div className="flex items-center gap-4">
-          <button
-            onClick={toggleTheme}
-            className="px-3 py-1 border rounded-md border-gray-400 dark:border-gray-600 hover:bg-gray-100 dark:hover:bg-gray-800 transition"
+    <footer className="bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-100 py-8 mt-auto">
+      <div className="max-w-7xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
+        {/* Left: Text */}
+        <p className="text-sm">
+          © 2025 Lambda Phi Epsilon at THE Ohio State University
+        </p>
+
+        {/* Right: Social Icons */}
+        <div className="flex space-x-6">
+          <a
+            href="mailto:info@lambdaphiepsilonosu.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:text-blue-600 transition"
           >
-            {theme === "light" ? "Dark Mode" : "Light Mode"}
-          </button>
+            <FontAwesomeIcon icon={faEnvelope} size="lg" />
+          </a>
+          <a
+            href="https://www.instagram.com/lambdaphiepsilonosu/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:text-pink-500 transition"
+          >
+            <FontAwesomeIcon icon={faInstagram} size="lg" />
+          </a>
+          <a
+            href="https://www.youtube.com/@LambdaPhiEpsilonOSU"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:text-red-600 transition"
+          >
+            <FontAwesomeIcon icon={faYoutube} size="lg" />
+          </a>
         </div>
       </div>
     </footer>

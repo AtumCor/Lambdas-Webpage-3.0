@@ -1,20 +1,14 @@
 ---
+id: 1
 name: Ethan Chan
-image: images/bros/1echan.webp
+nickname: Doc McStuffins
+portrait: images/bros/1echan.webp
 group: charter
 role: alumni
-description: "#1 'Doc McStuffins'"
-links:
-  # instagram: 
-  # twitter: 
-  # linkedin: 
 ---
 
+**Ethnicity:** Chinese
 
-Ethnicity: Chinese
+**Major:** Biology
 
-Major: Biology
-
-Big Bro: Vinh "Professor X" Vu (OU)
-
-
+**Big Bro:** Vinh "Professor X" Vu (OU)
