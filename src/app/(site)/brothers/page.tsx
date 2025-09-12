@@ -1,44 +1,12 @@
-
 import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
 import Image from "next/image";
 import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-
-type Brother = {
-  id: string;
-  name: string;
-  nickname: string;
-  role?: string;
-  portrait?: string;
-  group?: string;
-  major?: string;
-};
-
-// 1️⃣ Load all brothers from markdown
-async function getAllBrothers(): Promise<Brother[]> {
-  const membersDir = path.join(process.cwd(), "/src/content/members");
-  if (!fs.existsSync(membersDir)) return [];
-
-  const files = fs.readdirSync(membersDir);
-
-  return files.map((fileName) => {
-    const filePath = path.join(membersDir, fileName);
-    const fileContents = fs.readFileSync(filePath, "utf8");
-    const { data } = matter(fileContents);
-
-    return {
-      id: data.id,
-      name: data.name,
-      nickname: data.nickname,
-      role: data.role,
-      portrait: data.portrait,
-      group: data.group || "Unknown",
-      major: data.major,
-    } as Brother;
-  });
-}
+import Header from "@/components/Header";
+import { getAllBrothers, Brother } from "@/lib/members";
+import ScrollToTopButton from "@/components/ScrollToTopBtn";
 
 // 2️⃣ Group brothers by their group
 function groupBrothers(brothers: Brother[]): Record<string, Brother[]> {
@@ -67,21 +35,27 @@ export default async function BrothersPage() {
   });
 
   return (
-    <main className="py-16 px-4 bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100">
-      <div className="max-w-7xl mx-auto">
+    <main className="">
+      <Header />
+      <ScrollToTopButton />
+
+      <div className="max-w-7xl mx-auto px-16">
         <h1 className="text-4xl font-bold text-center mb-12">Meet the Brothers</h1>
 
         {sortedGroups.map((groupName) => (
-          <section key={groupName} className="mb-12">
-            <h2 className="text-3xl font-semibold mb-6">{groupName}</h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+          <section key={groupName} className="mb-12 px-4">
+            <h2 className="text-3xl font-semibold mb-6">
+              {groupName.charAt(0).toUpperCase() + groupName.slice(1)} Class
+            </h2>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 justify-items-center">
               {grouped[groupName]
-                .sort((a, b) => a.name.localeCompare(b.name))
+                .sort((a, b) => Number(a.id) - Number(b.id))
                 .map((brother) => (
                   <Link
                     key={brother.id}
                     href={`/members/${brother.id}`}
-                    className="relative bg-white dark:bg-gray-800 rounded-lg shadow-sm p-4 flex flex-col items-center hover:shadow-lg transition transform hover:-translate-y-1"
+                    className="relative bg-white dark:bg-gray-800 rounded-lg shadow-sm p-4 flex flex-col items-center hover:shadow-lg transition transform hover:-translate-y-1 w-full max-w-[250px]"
                   >
                     {/* Top-left role icon */}
                     <div className="absolute top-2 left-2 text-gray-500 dark:text-gray-400">
@@ -106,7 +80,9 @@ export default async function BrothersPage() {
                     {/* Name & info */}
                     <h3 className="mt-4 text-xl font-semibold">{brother.name}</h3>
                     {brother.nickname && (
-                      <p className="text-sm text-gray-500 dark:text-gray-400">#{brother.id} {brother.nickname}</p>
+                      <p className="text-sm text-gray-500 dark:text-gray-400">
+                        #{brother.id} {brother.nickname}
+                      </p>
                     )}
                     {brother.major && (
                       <p className="text-sm text-gray-500 dark:text-gray-400">{brother.major}</p>
@@ -117,6 +93,7 @@ export default async function BrothersPage() {
           </section>
         ))}
       </div>
+
     </main>
   );
 }

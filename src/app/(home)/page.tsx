@@ -4,6 +4,8 @@ import path from "path";
 import fs from "fs";
 import matter from "gray-matter";
 import { Counters } from "@/components/Counters";
+import { getAllBrothers } from "@/lib/members";
+import { navLinks } from "@/config/navLinks";
 
 type Brother = {
   id: string;
@@ -13,28 +15,6 @@ type Brother = {
   group?: string;
   major?: string;
 };
-
-// Load all brothers
-async function getAllBrothers(): Promise<Brother[]> {
-  const membersDir = path.join(process.cwd(), "/src/content/members");
-  if (!fs.existsSync(membersDir)) return [];
-
-  const files = fs.readdirSync(membersDir);
-  return files.map((fileName) => {
-    const filePath = path.join(membersDir, fileName);
-    const fileContents = fs.readFileSync(filePath, "utf8");
-    const { data } = matter(fileContents);
-
-    return {
-      id: data.id,
-      name: data.name,
-      role: data.role,
-      portrait: data.portrait,
-      group: data.group || "Unknown",
-      major: data.major,
-    } as Brother;
-  });
-}
 
 export default async function HomePage() {
   const brothers = await getAllBrothers();
@@ -65,20 +45,17 @@ export default async function HomePage() {
           <p className="text-lg md:text-xl mb-8 text-white">At THE Ohio State University</p>
 
           <nav className="mt-12 flex justify-center space-x-6">
-            {[
-              { label: "About Us", href: "/about-us" },
-              { label: "Brothers", href: "/brothers" },
-              { label: "Contact", href: "/contact" },
-              { label: "Philanthropy", href: "/philanthropy" },
-            ].map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className="text-lg font-medium text-white hover:text-blue-300 transition"
-              >
-                {link.label}
-              </Link>
-            ))}
+            <div className="flex justify-center gap-8 mt-12">
+              {navLinks.map((link) => (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className="px-6 py-3 rounded-lg text-white text-xl font-medium hover:text-blue-600 transition"
+                >
+                  {link.label}
+                </Link>
+              ))}
+            </div>
           </nav>
         </div>
       </section>

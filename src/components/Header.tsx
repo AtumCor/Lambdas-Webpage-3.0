@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { navLinks } from "@/config/navLinks";
 
 const navItems = [
   { name: "Home", href: "/" },
@@ -22,21 +23,15 @@ export default function Header() {
         </Link>
 
         <nav className="flex gap-6">
-          {navItems.map((item) => {
-            const isActive = pathname === item.href;
-            return (
-              <Link
-                key={item.name}
-                href={item.href}
-                aria-current={isActive ? "page" : undefined}
-                className={`text-sm font-medium ${
-                  isActive ? "text-blue-600" : "text-gray-600 hover:text-gray-900"
-                }`}
-              >
-                {item.name}
-              </Link>
-            );
-          })}
+          {navLinks.map((link) => (
+            <Link
+              key={link.href}
+              href={link.href}
+              className="text-l text-gray-900 hover:text-blue-600"
+            >
+              {link.label}
+            </Link>
+          ))}
         </nav>
       </div>
     </header>
