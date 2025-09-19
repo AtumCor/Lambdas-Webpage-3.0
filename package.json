@@ -18,6 +18,7 @@
     "@mdx-js/react": "^3.1.1",
     "@next/mdx": "^15.5.2",
     "d3": "^7.9.0",
+    "family-chart": "^0.8.0",
     "framer-motion": "^12.23.12",
     "gray-matter": "^4.0.3",
     "next": "^15.5.2",
@@ -31,6 +32,7 @@
   "devDependencies": {
     "@eslint/eslintrc": "^3",
     "@tailwindcss/postcss": "^4.1.13",
+    "@types/d3": "^7.4.3",
     "@types/estree": "^1.0.8",
     "@types/estree-jsx": "^1.0.5",
     "@types/hast": "^3.0.4",

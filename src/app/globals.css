@@ -1,9 +1,9 @@
 @import "tailwindcss";
 
 /* smooth transitions for dark mode */
-html {
+/* html {
   transition: background-color 0.3s, color 0.3s;
-}
+} */
 /* Hide or make scrollbar transparent */
 ::-webkit-scrollbar {
   width: 8px; /* or 0px if you want fully hidden */

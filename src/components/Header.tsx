@@ -1,5 +1,6 @@
 "use client";
 
+import "@/styles/Header.css";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { navLinks } from "@/config/navLinks";
@@ -19,10 +20,11 @@ export default function Header() {
     <header className="sticky top-0 z-50 border-b border-gray-200 bg-white">
       <div className="max-w-6xl mx-auto flex items-center justify-between px-4 py-3">
         <Link href="/" className="text-xl font-bold text-gray-900">
-          Greene Lab
+          <img className = "svg" src ="/images/logo.svg" alt="Lambda Phi Epsilon Logo"/>
+          <p className = "title">Lambda Phi Epsilong at THE Ohio State University</p>
         </Link>
 
-        <nav className="flex gap-6">
+        <nav className="flex gap-4 text-sm">
           {navLinks.map((link) => (
             <Link
               key={link.href}

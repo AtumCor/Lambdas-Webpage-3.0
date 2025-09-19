@@ -10,8 +10,8 @@ links:
   linkedin: austin-pham-6b4568239
 ---
 
-**Ethnicity:** Chinese
+**Ethnicity:** Vietnameese/Filipino
 
-**Major:** Finance
+**Major:** Mechanical Engineering
 
 **Big Bro:** [Kyle "PIONEER" Nguyen](45knguyen)

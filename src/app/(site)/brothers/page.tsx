@@ -58,7 +58,7 @@ export default async function BrothersPage() {
                     className="relative bg-white dark:bg-gray-800 rounded-lg shadow-sm p-4 flex flex-col items-center hover:shadow-lg transition transform hover:-translate-y-1 w-full max-w-[250px]"
                   >
                     {/* Top-left role icon */}
-                    <div className="absolute top-2 left-2 text-gray-500 dark:text-gray-400">
+                    <div className="absolute top-5 left-5 text-gray-500 dark:text-gray-400">
                       {brother.role?.toLowerCase() === "alumni" ? (
                         <FontAwesomeIcon icon={["fas", "graduation-cap"]} size="lg" />
                       ) : (

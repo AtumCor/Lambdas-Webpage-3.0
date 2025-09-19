@@ -1,0 +1,75 @@
+  .main_svg{
+    width: 100%;
+    height: 80%;
+  }
+
+.f3 div.card {
+    cursor: pointer;
+    pointer-events: auto;
+    color: #fff;
+    position: relative;
+  }
+
+  .f3 div.card-image {
+    border-radius: 50%;
+    padding: 5px;
+    width: 90px;
+    height: 90px;
+  }
+
+  .f3 div.card-image div.card-label {
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translate(-50%, 50%);
+    max-width: 150%;
+    height: 22px;
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.5);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    border-radius: 3px;
+    padding: 0 5px;
+  }
+
+  .f3 div.card-image img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+
+  .f3 div.card-text {
+    padding: 5px;
+    border-radius: 3px;
+    width: 120px;
+    height: 70px;
+    overflow: hidden;
+    line-height: 1.2;
+  }
+
+  .f3 div.card > div {
+    transition: transform 0.2s ease-in-out;
+  }
+
+  .f3 div.card:hover > div {
+    transform: scale(1.1);
+  }
+
+  .f3 div.card-main {
+    transform: scale(1.2)!important;
+  }
+
+  .f3 div.card-female {
+    background-color: rgb(196, 138, 146);
+  }
+  .f3 div.card-male {
+    background-color: rgb(120, 159, 172);
+  }
+  .f3 div.card-genderless {
+    background-color: lightgray;
+  }
+  .f3 div.card-main {
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.8);
+  }

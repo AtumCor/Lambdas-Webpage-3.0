@@ -5,6 +5,8 @@ import { remark } from "remark";
 import html from "remark-html";
 import Image from "next/image";
 import Link from "next/link";
+import Header from "@/components/Header";
+
 
 type MemberFrontmatter = {
   id: string;
@@ -47,7 +49,10 @@ export default async function MemberPage(props: MemberPageProps) {
   const { frontmatter, content } = await getMemberData(id);
 
   return (
-    <main className="max-w-4xl mx-auto px-6 py-12 bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100">
+    <main className="">
+    <Header/>
+    <div className="max-w-4xl mx-auto px-6 py-12 bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100">
+
       {/* Portrait & Basic Info */}
       <div className="flex flex-col items-center text-center mb-8">
         {frontmatter.portrait && (
@@ -111,6 +116,7 @@ export default async function MemberPage(props: MemberPageProps) {
           Blog posts by {frontmatter.name}
         </Link>
       </div>
+    </div>
     </main>
   );
 }
